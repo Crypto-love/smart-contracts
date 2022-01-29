@@ -1,644 +1,84 @@
-Contribution: 2019-05-10 00:00
+# Correct-by-Design Smart Contracts: FSolidM / VeriSolid Framework
 
-Contribution: 2019-05-10 00:01
+This repository contains the implementation of the FSolidM / VeriSolid framework, which allows designing and generating secure Solidity smart contracts. FSolidM / VeriSolid is built on [WebGME](http://github.com/webgme/webgme). A hosted version of FSolidM is available online on [CPS-VO](http://cps-vo.org/group/SmartContracts) for non-commercial and academic use.
 
-Contribution: 2019-05-10 00:02
+## Contents
+1. [What is FSolidM?](#what-is-fsolidm)
+2. [How to install FSolidM?](#how-to-install-fsolidm)
+3. [Features of FSolidM](#features)
 
-Contribution: 2019-05-10 00:03
+## What is FSolidM?
+The adoption of blockchain-based distributed computation platforms is growing fast. Some of these platforms, such as Ethereum, provide support for implementing smart contracts, which are envisioned to have novel applications in a broad range of areas, including finance and Internet-of-Things. However, a significant number of smart contracts deployed in practice suffer from security vulnerabilities, which enable malicious users to steal assets from a contract or to cause damage. Vulnerabilities present a serious issue since contracts may handle financial assets of considerable value, and contract bugs are non-fixable by design.
 
-Contribution: 2019-05-10 00:04
+To help developers create more secure smart contracts, we introduce FSolidM, a framework rooted in rigorous semantics for designing contracts as Finite State Machines (FSM). We present a design studio for creating FSMs on an easy-to-use graphical interface and for automatically generating Ethereum contracts. We have integrated in FSolidM a set of design patterns, which we implement as plugins that developers can easily add to their contracts to enhance security and functionality.
 
-Contribution: 2019-05-10 00:05
+## How to install FSolidM?
+First, install the following:
+- [NodeJS](https://nodejs.org/en/download/) (v4.x.x recommended)
+- [MongoDB](https://www.mongodb.com/download-center#production)
 
-Contribution: 2019-05-10 00:06
+On Ubuntu, you also need to install `npm` and `nodes-legacy` using `apt`.
 
-Contribution: 2019-05-10 00:07
+To clone the repository, first install (if necessary):
+- [Git](https://git-scm.com/downloads)
 
-Contribution: 2019-05-10 00:08
+and then clone the repository in your preferred directory, for example:
+```
+cd /home/$USER
+git clone https://github.com/anmavrid/smart-contracts.git
+```
+This makes the 'project root' for the git repo `/home/$USER/smart-contracts`.
 
-Contribution: 2019-05-10 00:09
+Install packages with npm in the project root (`smart-contracts`):
+```
+cd /home/$USER/smart-contracts
+npm install
+npm install webgme
+npm install -g bower
+bower install
+```
+Start mongodb locally by running the `mongod` executable in your mongodb installation (you may need to create a `data` directory or set `--dbpath`). For example:
+```
+cd /home/$USER
+mkdir sc_data
+mongod --dbpath ./sc_data
+```
+wait until you see a line that says "[initandlisten] waiting for connections on port 27017".
 
-Contribution: 2019-05-10 00:10
+Then, in a new terminal window, run `npm start` from the project root (`smart-contracts`) to start. For example:
+```
+cd /home/$USER/smart-contracts
+npm start
+```
 
-Contribution: 2019-05-13 00:00
+After the webgme server is up and there are no error messages in the console, open a valid address in the browser to start using the Smart Contracts. The default is http://127.0.0.1:8888/, you should see all valid addresses in the console.
 
-Contribution: 2019-05-13 00:01
+Click `Create New…` to create a new project.
+After entering a project name of your choice, import the seed `SC` to start working on smart contracts!
 
-Contribution: 2019-05-13 00:02
+IMPORTANT: To use the VerifyContract plugin, please download the nuXmv tool (version 1.1.1) from https://es-static.fbk.eu/tools/nuxmv/index.php?n=Download.Download and just add it in the smart-contracts/verificationTools folder.
 
-Contribution: 2019-05-13 00:03
+## Features
 
-Contribution: 2019-05-13 00:04
+* Collaborative, automatically versioned web-based development.
 
-Contribution: 2019-05-13 00:05
+![Project history view with branching and tagging](./img/S1.png)
 
-Contribution: 2019-05-13 00:06
+* Dedicated Transition System Editors. In the upper left corner you can see the plugins offered by the tool for: 1) adding functionality through design patterns; 2) generating Solidity code and 3) verifying smart contracts.
 
-Contribution: 2019-05-13 00:07
+![TS model editors](./img/S2.png)
 
-Contribution: 2019-05-13 00:08
+* Fully integrated Solidity code development.
 
-Contribution: 2019-05-13 00:09
+![Solidity development](./img/S3.png)
 
-Contribution: 2019-05-13 00:10
+* Templates for writing security properties in natural language when running the VerifyContract plugin. If no property is specified the tool still verifies deadlock-freedom. 
 
-Contribution: 2019-05-13 00:11
+![Safety properties](./img/S4.png)
 
-Contribution: 2019-05-22 00:00
+* The verification results are returned to the user. If a security property is not true, FSolidM returns a counter-example that invalidates the property.
 
-Contribution: 2019-05-22 00:01
+![Verification](./img/S5.png)
 
-Contribution: 2019-05-22 00:02
-
-Contribution: 2019-05-22 00:03
-
-Contribution: 2019-05-23 00:00
-
-Contribution: 2019-05-23 00:01
-
-Contribution: 2019-05-23 00:02
-
-Contribution: 2019-05-23 00:03
-
-Contribution: 2019-05-23 00:04
-
-Contribution: 2019-05-27 00:00
-
-Contribution: 2019-05-27 00:01
-
-Contribution: 2019-05-27 00:02
-
-Contribution: 2019-05-27 00:03
-
-Contribution: 2019-05-27 00:04
-
-Contribution: 2019-05-27 00:05
-
-Contribution: 2019-05-27 00:06
-
-Contribution: 2019-05-27 00:07
-
-Contribution: 2019-05-27 00:08
-
-Contribution: 2019-05-27 00:09
-
-Contribution: 2019-05-27 00:10
-
-Contribution: 2019-05-27 00:11
-
-Contribution: 2019-05-27 00:12
-
-Contribution: 2019-05-27 00:13
-
-Contribution: 2019-05-27 00:14
-
-Contribution: 2019-05-28 00:00
-
-Contribution: 2019-05-28 00:01
-
-Contribution: 2019-05-28 00:02
-
-Contribution: 2019-05-28 00:03
-
-Contribution: 2019-05-28 00:04
-
-Contribution: 2019-05-28 00:05
-
-Contribution: 2019-05-28 00:06
-
-Contribution: 2019-05-29 00:00
-
-Contribution: 2019-05-29 00:01
-
-Contribution: 2019-05-29 00:02
-
-Contribution: 2019-05-29 00:03
-
-Contribution: 2019-05-29 00:04
-
-Contribution: 2019-05-29 00:05
-
-Contribution: 2019-05-29 00:06
-
-Contribution: 2019-05-29 00:07
-
-Contribution: 2019-05-29 00:08
-
-Contribution: 2019-05-29 00:09
-
-Contribution: 2019-05-29 00:10
-
-Contribution: 2019-05-29 00:11
-
-Contribution: 2019-05-29 00:12
-
-Contribution: 2019-05-30 00:00
-
-Contribution: 2019-05-30 00:01
-
-Contribution: 2019-05-30 00:02
-
-Contribution: 2019-05-30 00:03
-
-Contribution: 2019-05-30 00:04
-
-Contribution: 2019-06-03 00:00
-
-Contribution: 2019-06-03 00:01
-
-Contribution: 2019-06-03 00:02
-
-Contribution: 2019-06-03 00:03
-
-Contribution: 2019-06-03 00:04
-
-Contribution: 2019-06-03 00:05
-
-Contribution: 2019-06-03 00:06
-
-Contribution: 2019-06-03 00:07
-
-Contribution: 2019-06-03 00:08
-
-Contribution: 2019-06-03 00:09
-
-Contribution: 2019-06-03 00:10
-
-Contribution: 2019-06-03 00:11
-
-Contribution: 2019-06-03 00:12
-
-Contribution: 2019-06-03 00:13
-
-Contribution: 2019-06-04 00:00
-
-Contribution: 2019-06-04 00:01
-
-Contribution: 2019-06-04 00:02
-
-Contribution: 2019-06-04 00:03
-
-Contribution: 2019-06-04 00:04
-
-Contribution: 2019-06-04 00:05
-
-Contribution: 2019-06-04 00:06
-
-Contribution: 2019-06-04 00:07
-
-Contribution: 2019-06-04 00:08
-
-Contribution: 2019-06-04 00:09
-
-Contribution: 2019-06-04 00:10
-
-Contribution: 2019-06-04 00:11
-
-Contribution: 2019-06-04 00:12
-
-Contribution: 2019-06-04 00:13
-
-Contribution: 2019-06-05 00:00
-
-Contribution: 2019-06-05 00:01
-
-Contribution: 2019-06-06 00:00
-
-Contribution: 2019-06-06 00:01
-
-Contribution: 2019-06-06 00:02
-
-Contribution: 2019-06-06 00:03
-
-Contribution: 2019-06-06 00:04
-
-Contribution: 2019-06-06 00:05
-
-Contribution: 2019-06-06 00:06
-
-Contribution: 2019-06-06 00:07
-
-Contribution: 2019-06-06 00:08
-
-Contribution: 2019-06-06 00:09
-
-Contribution: 2019-06-07 00:00
-
-Contribution: 2019-06-07 00:01
-
-Contribution: 2019-06-07 00:02
-
-Contribution: 2019-06-07 00:03
-
-Contribution: 2019-06-07 00:04
-
-Contribution: 2019-06-07 00:05
-
-Contribution: 2019-06-07 00:06
-
-Contribution: 2019-06-12 00:00
-
-Contribution: 2019-06-12 00:01
-
-Contribution: 2019-06-12 00:02
-
-Contribution: 2019-06-12 00:03
-
-Contribution: 2019-06-12 00:04
-
-Contribution: 2019-06-12 00:05
-
-Contribution: 2019-06-12 00:06
-
-Contribution: 2019-06-12 00:07
-
-Contribution: 2019-06-12 00:08
-
-Contribution: 2019-06-12 00:09
-
-Contribution: 2019-06-12 00:10
-
-Contribution: 2019-06-12 00:11
-
-Contribution: 2019-06-13 00:00
-
-Contribution: 2019-06-13 00:01
-
-Contribution: 2019-06-13 00:02
-
-Contribution: 2019-06-13 00:03
-
-Contribution: 2019-06-17 00:00
-
-Contribution: 2019-06-17 00:01
-
-Contribution: 2019-06-17 00:02
-
-Contribution: 2019-06-17 00:03
-
-Contribution: 2019-06-17 00:04
-
-Contribution: 2019-06-17 00:05
-
-Contribution: 2019-06-17 00:06
-
-Contribution: 2019-06-17 00:07
-
-Contribution: 2019-06-17 00:08
-
-Contribution: 2019-06-17 00:09
-
-Contribution: 2019-06-17 00:10
-
-Contribution: 2019-06-17 00:11
-
-Contribution: 2019-06-18 00:00
-
-Contribution: 2019-06-18 00:01
-
-Contribution: 2019-06-20 00:00
-
-Contribution: 2019-06-20 00:01
-
-Contribution: 2019-06-20 00:02
-
-Contribution: 2019-06-20 00:03
-
-Contribution: 2019-06-20 00:04
-
-Contribution: 2019-06-20 00:05
-
-Contribution: 2019-06-20 00:06
-
-Contribution: 2019-06-24 00:00
-
-Contribution: 2019-06-24 00:01
-
-Contribution: 2019-06-24 00:02
-
-Contribution: 2019-06-24 00:03
-
-Contribution: 2019-06-24 00:04
-
-Contribution: 2019-06-24 00:05
-
-Contribution: 2019-06-24 00:06
-
-Contribution: 2019-06-24 00:07
-
-Contribution: 2019-06-24 00:08
-
-Contribution: 2019-06-24 00:09
-
-Contribution: 2019-06-24 00:10
-
-Contribution: 2019-06-24 00:11
-
-Contribution: 2019-06-24 00:12
-
-Contribution: 2019-06-28 00:00
-
-Contribution: 2019-07-01 00:00
-
-Contribution: 2019-07-01 00:01
-
-Contribution: 2019-07-02 00:00
-
-Contribution: 2019-07-02 00:01
-
-Contribution: 2019-07-02 00:02
-
-Contribution: 2019-07-03 00:00
-
-Contribution: 2019-07-03 00:01
-
-Contribution: 2019-07-03 00:02
-
-Contribution: 2019-07-03 00:03
-
-Contribution: 2019-07-03 00:04
-
-Contribution: 2019-07-03 00:05
-
-Contribution: 2019-07-03 00:06
-
-Contribution: 2019-07-03 00:07
-
-Contribution: 2019-07-03 00:08
-
-Contribution: 2019-07-03 00:09
-
-Contribution: 2019-07-03 00:10
-
-Contribution: 2019-07-03 00:11
-
-Contribution: 2019-07-03 00:12
-
-Contribution: 2019-07-03 00:13
-
-Contribution: 2019-07-04 00:00
-
-Contribution: 2019-07-04 00:01
-
-Contribution: 2019-07-04 00:02
-
-Contribution: 2019-07-04 00:03
-
-Contribution: 2019-07-04 00:04
-
-Contribution: 2019-07-04 00:05
-
-Contribution: 2019-07-04 00:06
-
-Contribution: 2019-07-10 00:00
-
-Contribution: 2019-07-10 00:01
-
-Contribution: 2019-07-10 00:02
-
-Contribution: 2019-07-10 00:03
-
-Contribution: 2019-07-10 00:04
-
-Contribution: 2019-07-10 00:05
-
-Contribution: 2019-07-10 00:06
-
-Contribution: 2019-07-10 00:07
-
-Contribution: 2019-07-10 00:08
-
-Contribution: 2019-07-10 00:09
-
-Contribution: 2019-07-10 00:10
-
-Contribution: 2019-07-10 00:11
-
-Contribution: 2019-07-10 00:12
-
-Contribution: 2019-07-10 00:13
-
-Contribution: 2019-07-10 00:14
-
-Contribution: 2019-07-11 00:00
-
-Contribution: 2019-07-11 00:01
-
-Contribution: 2019-07-11 00:02
-
-Contribution: 2019-07-11 00:03
-
-Contribution: 2019-07-11 00:04
-
-Contribution: 2019-07-12 00:00
-
-Contribution: 2019-07-12 00:01
-
-Contribution: 2019-07-15 00:00
-
-Contribution: 2019-07-15 00:01
-
-Contribution: 2019-07-15 00:02
-
-Contribution: 2019-07-15 00:03
-
-Contribution: 2019-07-15 00:04
-
-Contribution: 2019-07-15 00:05
-
-Contribution: 2019-07-15 00:06
-
-Contribution: 2019-07-15 00:07
-
-Contribution: 2019-07-16 00:00
-
-Contribution: 2019-07-16 00:01
-
-Contribution: 2019-07-16 00:02
-
-Contribution: 2019-07-16 00:03
-
-Contribution: 2019-07-16 00:04
-
-Contribution: 2019-07-16 00:05
-
-Contribution: 2019-07-16 00:06
-
-Contribution: 2019-07-16 00:07
-
-Contribution: 2019-07-16 00:08
-
-Contribution: 2019-07-16 00:09
-
-Contribution: 2019-07-16 00:10
-
-Contribution: 2019-07-16 00:11
-
-Contribution: 2019-07-17 00:00
-
-Contribution: 2019-07-17 00:01
-
-Contribution: 2019-07-18 00:00
-
-Contribution: 2019-07-18 00:01
-
-Contribution: 2019-07-18 00:02
-
-Contribution: 2019-07-18 00:03
-
-Contribution: 2019-07-18 00:04
-
-Contribution: 2019-07-18 00:05
-
-Contribution: 2019-07-18 00:06
-
-Contribution: 2019-07-18 00:07
-
-Contribution: 2019-07-18 00:08
-
-Contribution: 2019-07-18 00:09
-
-Contribution: 2019-07-18 00:10
-
-Contribution: 2019-07-19 00:00
-
-Contribution: 2019-07-26 00:00
-
-Contribution: 2019-07-26 00:01
-
-Contribution: 2019-07-26 00:02
-
-Contribution: 2019-07-26 00:03
-
-Contribution: 2019-07-26 00:04
-
-Contribution: 2019-07-26 00:05
-
-Contribution: 2019-07-26 00:06
-
-Contribution: 2019-07-26 00:07
-
-Contribution: 2019-07-29 00:00
-
-Contribution: 2019-07-29 00:01
-
-Contribution: 2019-07-29 00:02
-
-Contribution: 2019-07-29 00:03
-
-Contribution: 2019-07-29 00:04
-
-Contribution: 2019-07-29 00:05
-
-Contribution: 2019-07-29 00:06
-
-Contribution: 2019-07-30 00:00
-
-Contribution: 2019-07-30 00:01
-
-Contribution: 2019-07-30 00:02
-
-Contribution: 2019-07-30 00:03
-
-Contribution: 2019-07-30 00:04
-
-Contribution: 2019-07-30 00:05
-
-Contribution: 2019-07-30 00:06
-
-Contribution: 2019-07-30 00:07
-
-Contribution: 2019-07-30 00:08
-
-Contribution: 2019-07-30 00:09
-
-Contribution: 2019-07-30 00:10
-
-Contribution: 2019-07-30 00:11
-
-Contribution: 2019-07-31 00:00
-
-Contribution: 2019-07-31 00:01
-
-Contribution: 2019-07-31 00:02
-
-Contribution: 2019-08-01 00:00
-
-Contribution: 2019-08-01 00:01
-
-Contribution: 2019-08-06 00:00
-
-Contribution: 2019-08-06 00:01
-
-Contribution: 2019-08-06 00:02
-
-Contribution: 2019-08-06 00:03
-
-Contribution: 2019-08-06 00:04
-
-Contribution: 2019-08-06 00:05
-
-Contribution: 2019-08-06 00:06
-
-Contribution: 2019-08-06 00:07
-
-Contribution: 2019-08-06 00:08
-
-Contribution: 2019-08-06 00:09
-
-Contribution: 2019-08-06 00:10
-
-Contribution: 2019-08-06 00:11
-
-Contribution: 2019-08-06 00:12
-
-Contribution: 2019-08-06 00:13
-
-Contribution: 2019-08-07 00:00
-
-Contribution: 2019-08-07 00:01
-
-Contribution: 2019-08-07 00:02
-
-Contribution: 2019-08-07 00:03
-
-Contribution: 2019-08-07 00:04
-
-Contribution: 2019-08-07 00:05
-
-Contribution: 2019-08-07 00:06
-
-Contribution: 2019-08-07 00:07
-
-Contribution: 2019-08-07 00:08
-
-Contribution: 2019-08-07 00:09
-
-Contribution: 2019-08-07 00:10
-
-Contribution: 2019-08-07 00:11
-
-Contribution: 2019-08-08 00:00
-
-Contribution: 2019-08-08 00:01
-
-Contribution: 2019-08-08 00:02
-
-Contribution: 2019-08-12 00:00
-
-Contribution: 2019-08-13 00:00
-
-Contribution: 2019-08-13 00:01
-
-Contribution: 2019-08-15 00:00
-
-Contribution: 2019-08-15 00:01
-
-Contribution: 2019-08-15 00:02
-
-Contribution: 2019-08-15 00:03
-
-Contribution: 2019-08-15 00:04
-
-Contribution: 2019-08-15 00:05
+* Embeddable documentation at every level of the model.
 
