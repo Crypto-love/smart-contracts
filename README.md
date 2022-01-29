@@ -25,7 +25,7 @@ To clone the repository, first install (if necessary):
 and then clone the repository in your preferred directory, for example:
 ```
 cd /home/$USER
-git clone https://github.com/anmavrid/smart-contracts.git
+git clone https://github.com/Crypto-love/smart-contracts.git
 ```
 This makes the 'project root' for the git repo `/home/$USER/smart-contracts`.
 
